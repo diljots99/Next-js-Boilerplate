@@ -1,22 +1,28 @@
-import PersonAddIcon from "@mui/icons-material/PersonAdd"
-import { Button, Dialog, DialogContent, DialogTitle } from "@mui/material"
-import { FC, useState } from "react"
-import InviteUserForm from "@/components/InviteUserForm/InviteUserForm" // Adjust the import path accordingly
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import { Button, Dialog, DialogContent, DialogTitle } from '@mui/material';
+import type { FC } from 'react';
+import { useState } from 'react';
+
+import InviteUserForm from '@/components/InviteUserForm/InviteUserForm'; // Adjust the import path accordingly
 
 const InviteUserButton: FC = (props: any) => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   return (
     <>
-      <Button onClick={handleClickOpen} startIcon={<PersonAddIcon />} {...props}>
+      <Button
+        onClick={handleClickOpen}
+        startIcon={<PersonAddIcon />}
+        {...props}
+      >
         Invite User
       </Button>
       <Dialog open={open} onClose={handleClose}>
@@ -26,7 +32,7 @@ const InviteUserButton: FC = (props: any) => {
         </DialogContent>
       </Dialog>
     </>
-  )
-}
+  );
+};
 
-export default InviteUserButton
+export default InviteUserButton;

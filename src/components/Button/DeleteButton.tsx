@@ -1,7 +1,8 @@
 // src/components/Button/DeleteButton.tsx
-import { Tooltip } from "@mui/material"
-import React from "react"
-import { DeleteButtonProps, DeleteButton as RaDeleteButton } from "react-admin"
+import { Tooltip } from '@mui/material';
+import React from 'react';
+import type { DeleteButtonProps } from 'react-admin';
+import { DeleteButton as RaDeleteButton } from 'react-admin';
 
 const DeleteButton: React.FC<DeleteButtonProps> = (props) => {
   return (
@@ -10,7 +11,7 @@ const DeleteButton: React.FC<DeleteButtonProps> = (props) => {
         <RaDeleteButton {...props} />
       </span>
     </Tooltip>
-  )
-}
+  );
+};
 
-export default DeleteButton
+export default DeleteButton;

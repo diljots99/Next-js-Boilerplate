@@ -1,7 +1,8 @@
 // src/components/Button/EditButton.tsx
-import { Tooltip } from "@mui/material"
-import React from "react"
-import { EditButtonProps, EditButton as RaEditButton } from "react-admin"
+import { Tooltip } from '@mui/material';
+import React from 'react';
+import type { EditButtonProps } from 'react-admin';
+import { EditButton as RaEditButton } from 'react-admin';
 
 const EditButton: React.FC<EditButtonProps> = (props) => {
   return (
@@ -10,7 +11,7 @@ const EditButton: React.FC<EditButtonProps> = (props) => {
         <RaEditButton {...props} />
       </span>
     </Tooltip>
-  )
-}
+  );
+};
 
-export default EditButton
+export default EditButton;
