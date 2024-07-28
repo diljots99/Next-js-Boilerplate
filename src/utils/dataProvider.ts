@@ -1,87 +1,100 @@
 // Data and Auth
 // import axios from "axios"
-import drfProvider, { fetchJsonWithAuthToken, tokenAuthProvider } from "ra-data-django-rest-framework"
+import drfProvider, {
+  fetchJsonWithAuthToken,
+  tokenAuthProvider,
+} from 'ra-data-django-rest-framework';
 
 // Define types for resource and params
-type Resource = string
-type Params = any // Adjust this type based on actual parameters used
+type Resource = string;
+type Params = any; // Adjust this type based on actual parameters used
 
 // const BASE_URL = process.env.API_BASE_URL || "http://localhost:8000"
-const BASE_URL = process.env.API_BASE_URL || "https://erp-backend-nine.vercel.app"
-const AUTH_URL = BASE_URL + "/auth-token/"
+const BASE_URL =
+  process.env.API_BASE_URL || 'https://erp-backend-nine.vercel.app';
+const AUTH_URL = `${BASE_URL}/auth-token/`;
 
 export const authProvider = tokenAuthProvider({
   obtainAuthTokenUrl: AUTH_URL,
-})
+});
 
-export const dataProvider = drfProvider(`${BASE_URL}/api`, fetchJsonWithAuthToken)
+export const client = drfProvider(`${BASE_URL}/api`, fetchJsonWithAuthToken);
 
-const client = {
+const dataProvider = {
   getList: (resource: Resource, params: Params) => {
-    return dataProvider.getList(resource, params)
+    return client.getList(resource, params);
   },
   getOne: (resource: Resource, params: Params) => {
-    return dataProvider.getOne(resource, params)
+    return client.getOne(resource, params);
   },
   getMany: (resource: Resource, params: Params) => {
-    return dataProvider.getMany(resource, params)
+    return client.getMany(resource, params);
   },
   getManyReference: (resource: Resource, params: Params) => {
-    return dataProvider.getManyReference(resource, params)
+    return client.getManyReference(resource, params);
   },
   create: (resource: Resource, params: Params) => {
-    return dataProvider.create(resource, params)
+    return client.create(resource, params);
   },
   update: (resource: Resource, params: Params) => {
-    return dataProvider.update(resource, params)
+    return client.update(resource, params);
   },
   updateMany: (resource: Resource, params: Params) => {
-    return dataProvider.updateMany(resource, params)
+    return client.updateMany(resource, params);
   },
   delete: (resource: Resource, params: Params) => {
-    return dataProvider.delete(resource, params)
+    return client.delete(resource, params);
   },
   deleteMany: (resource: Resource, params: Params) => {
-    return dataProvider.deleteMany(resource, params)
+    return client.deleteMany(resource, params);
   },
   inviteUser: async (data: { email: string }) => {
     try {
-      const res = await fetchJsonWithAuthToken(`${BASE_URL}/api/users/invite_user/`, {
-        method: "POST",
-        // headers: {
-        //   'Content-Type': 'application/json', // Ensure content type is specified
-        // },
-        body: JSON.stringify(data),
-      })
-      console.log("inviteUser", res)
-      return res.json
+      const res = await fetchJsonWithAuthToken(
+        `${BASE_URL}/api/users/invite_user/`,
+        {
+          method: 'POST',
+          // headers: {
+          //   'Content-Type': 'application/json', // Ensure content type is specified
+          // },
+          body: JSON.stringify(data),
+        },
+      );
+      console.log('inviteUser', res);
+      return res.json;
     } catch (err) {
-      console.error(err)
-      throw err // Re-throw the error if needed
+      console.error(err);
+      throw err; // Re-throw the error if needed
     }
   },
   monitorCompany: async (companyID: string) => {
     try {
-      const res = await fetchJsonWithAuthToken(`${BASE_URL}/api/company-offical/${companyID}/monitor/`, {
-        method: "GET",
-      })
-      return res.json()
+      const res = await fetchJsonWithAuthToken(
+        `${BASE_URL}/api/company-offical/${companyID}/monitor/`,
+        {
+          method: 'GET',
+        },
+      );
+      return res.json();
     } catch (err) {
-      console.error(err)
-      throw err // Re-throw the error if needed
+      console.error(err);
+      throw err; // Re-throw the error if needed
     }
   },
   unMonitorCompany: async (companyID: string) => {
     try {
-      const res = await fetchJsonWithAuthToken(`${BASE_URL}/api/company-offical/${companyID}/unmonitor/`, {
-        method: "GET",
-      })
-      return res.json()
+      const res = await fetchJsonWithAuthToken(
+        `${BASE_URL}/api/company-offical/${companyID}/unmonitor/`,
+        {
+          method: 'GET',
+        },
+      );
+      return res.json();
     } catch (err) {
-      console.error(err)
-      throw err // Re-throw the error if needed
+      console.error(err);
+      throw err; // Re-throw the error if needed
     }
   },
-}
+};
 
-export default client
+export default dataProvider;
