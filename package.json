@@ -35,6 +35,7 @@
     "@spotlightjs/spotlight": "^2.0.0",
     "@t3-oss/env-nextjs": "^0.11.0",
     "drizzle-orm": "^0.32.0",
+    
     "next": "^14.2.5",
     "next-intl": "^3.17.2",
     "pg": "^8.12.0",
@@ -43,8 +44,14 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.1",
+    "react-admin": "^4.16.20",
+    "ra-data-django-rest-framework": "^0.2.1",
+    "react-query": "^3.39.3",
     "sharp": "^0.33.4",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^5.16.5",
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
